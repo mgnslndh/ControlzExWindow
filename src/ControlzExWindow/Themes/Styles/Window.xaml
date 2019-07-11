@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ControlzExWindow.Themes.Styles">
+    <Style x:Key="ControlzExWindow" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="AntiqueWhite"/>
+    </Style>
+
+    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource ControlzExWindow}"/>
+</ResourceDictionary>
