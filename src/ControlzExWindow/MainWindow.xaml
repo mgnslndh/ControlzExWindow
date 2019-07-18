@@ -2,11 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:ControlzExWindow.Controls"
-        mc:Ignorable="d"        
+        mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center">Hello</Button>
+        <StackPanel>
+            <TextBlock>Hello World</TextBlock>
+            <Button Name="SwitchTheme" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SwitchTheme_OnClick">Switch Theme</Button>
+        </StackPanel>
+
     </Grid>
 </controls:CustomWindow>

@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                    
                     xmlns:local="clr-namespace:ControlzExWindow.Themes.Styles"
-                    xmlns:controls="clr-namespace:ControlzExWindow.Controls">
+                    xmlns:controls="clr-namespace:ControlzExWindow.Controls"
+                    xmlns:theme="clr-namespace:ControlzExWindow.Themes">
 
 
 
@@ -18,7 +19,9 @@
     </ControlTemplate>
 
     <Style x:Key="CustomWindow" TargetType="{x:Type controls:CustomWindow}">
-        <Setter Property="Background" Value="Beige"/>
+        <Setter Property="Background" Value="{theme:ThemeResource ResourceKey=ChromeBackground}"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Aqua"/>
         <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
         <Setter Property="Template" Value="{StaticResource CustomWindowTemplate}"/>
         <Style.Triggers>

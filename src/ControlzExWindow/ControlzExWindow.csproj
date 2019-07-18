@@ -61,6 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Themes\DarkThemeBrushes.cs" />
+    <Compile Include="Themes\DarkThemeColors.cs" />
+    <Compile Include="Themes\LightThemeBrushes.cs" />
+    <Compile Include="Themes\LightThemeColors.cs" />
+    <Compile Include="Themes\Theme.cs" />
+    <Compile Include="Themes\ThemeColors.cs" />
+    <Compile Include="Themes\ThemeResourceDictionary.cs" />
+    <Compile Include="Themes\ThemeResourceExtension.cs" />
+    <Compile Include="Themes\ThemeResourceKey.cs" />
+    <Compile Include="Themes\ThemeType.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>

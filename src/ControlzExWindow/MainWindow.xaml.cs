@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ControlzExWindow.Themes;
 
 namespace ControlzExWindow
 {
@@ -23,6 +24,12 @@ namespace ControlzExWindow
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void SwitchTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            var theme = Theme.ThemeType == ThemeType.Light ? ThemeType.Dark : ThemeType.Light;
+            Theme.LoadThemeType(theme);
         }
     }
 }

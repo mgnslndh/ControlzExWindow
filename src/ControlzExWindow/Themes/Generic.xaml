@@ -2,11 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ControlzExWindow"
-    xmlns:controls="clr-namespace:ControlzExWindow.Controls">
+    xmlns:controls="clr-namespace:ControlzExWindow.Controls"
+    xmlns:themes="clr-namespace:ControlzExWindow.Themes">
 
 
 
     <ResourceDictionary.MergedDictionaries>
+        <themes:ThemeResourceDictionary/>
         <ResourceDictionary Source="/Themes/Styles/CustomWindow.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
