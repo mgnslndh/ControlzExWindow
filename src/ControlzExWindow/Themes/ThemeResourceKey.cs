@@ -2,7 +2,11 @@
 {
     public enum ThemeResourceKey
     {
-        ChromeBackground,
-        ChromeForeground,
+        WindowBackground,
+        WindowForeground,
+        WindowBorder,
+        WindowActiveBorder,
+        WindowTitleBackground,
+        WindowTitleForeground,
     }
 }

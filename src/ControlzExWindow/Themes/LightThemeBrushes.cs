@@ -4,7 +4,9 @@ namespace ControlzExWindow.Themes
 {
     public static class LightThemeBrushes
     {
-        public static readonly Brush ChromeBackground = new SolidColorBrush(LightThemeColors.ChromeBackground);
-        public static readonly Brush ChromeForeground = new SolidColorBrush(LightThemeColors.ChromeForeground);
+        public static readonly Brush WindowBackground = new SolidColorBrush(LightThemeColors.WindowBackground);
+        public static readonly Brush WindowForeground = new SolidColorBrush(LightThemeColors.WindowForeground);
+        public static readonly Brush WindowBorder = new SolidColorBrush(LightThemeColors.WindowBorder);
+        public static readonly Brush WindowActiveBorder = new SolidColorBrush(LightThemeColors.WindowActiveBorder);
     }
 }

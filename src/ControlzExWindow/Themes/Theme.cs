@@ -33,18 +33,26 @@ namespace ControlzExWindow.Themes
             switch (themeType)
             {
                 case ThemeType.Light:
-                {
-                    SetResource(ThemeResourceKey.ChromeBackground, LightThemeBrushes.ChromeBackground);
-                    SetResource(ThemeResourceKey.ChromeForeground, LightThemeBrushes.ChromeForeground);
-                    break;
-                }
+                    {
+                        SetResource(ThemeResourceKey.WindowBackground, LightThemeBrushes.WindowBackground);
+                        SetResource(ThemeResourceKey.WindowForeground, LightThemeBrushes.WindowForeground);
+                        SetResource(ThemeResourceKey.WindowBorder, LightThemeBrushes.WindowBorder);
+                        SetResource(ThemeResourceKey.WindowActiveBorder, LightThemeBrushes.WindowActiveBorder);
+                        SetResource(ThemeResourceKey.WindowTitleBackground, LightThemeBrushes.WindowBackground);
+                        SetResource(ThemeResourceKey.WindowTitleForeground, LightThemeBrushes.WindowForeground);
+                        break;
+                    }
 
                 case ThemeType.Dark:
-                {
-                    SetResource(ThemeResourceKey.ChromeBackground, DarkThemeBrushes.ChromeBackground);
-                    SetResource(ThemeResourceKey.ChromeForeground, DarkThemeBrushes.ChromeForeground);
+                    {
+                        SetResource(ThemeResourceKey.WindowBackground, DarkThemeBrushes.WindowBackground);
+                        SetResource(ThemeResourceKey.WindowForeground, DarkThemeBrushes.WindowForeground);
+                        SetResource(ThemeResourceKey.WindowBorder, DarkThemeBrushes.WindowBorder);
+                        SetResource(ThemeResourceKey.WindowActiveBorder, DarkThemeBrushes.WindowActiveBorder);
+                        SetResource(ThemeResourceKey.WindowTitleBackground, DarkThemeBrushes.WindowBackground);
+                        SetResource(ThemeResourceKey.WindowTitleForeground, DarkThemeBrushes.WindowForeground);
                         break;
-                }
+                    }
             }
         }
 
@@ -67,7 +75,7 @@ namespace ControlzExWindow.Themes
 
         internal static Color ColorFromHex(string colorHex)
         {
-            return (Color?) ColorConverter.ConvertFromString(colorHex) ?? Colors.Transparent;
+            return (Color?)ColorConverter.ConvertFromString(colorHex) ?? Colors.Transparent;
         }
     }
 }
