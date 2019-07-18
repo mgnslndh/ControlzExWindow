@@ -1,0 +1,14 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ControlzExWindow"
+    xmlns:controls="clr-namespace:ControlzExWindow.Controls">
+
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Themes/Styles/CustomWindow.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:CustomWindow}" BasedOn="{StaticResource CustomWindow}"/>
+</ResourceDictionary>
