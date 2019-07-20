@@ -1,1 +1,3 @@
 # ControlzExWindow
+
+This is a learning project for understanding how to build a custom chrome window using [ControlzEx.Behaviors.WindowChromeBehavior](https://github.com/ControlzEx/ControlzEx/blob/develop/src/ControlzEx/Behaviors/WindowChromeBehavior.cs). It borrows heavily from [MahApps.Metro.Controls.MetroWindow](https://github.com/MahApps/MahApps.Metro/blob/develop/src/MahApps.Metro/Controls/MetroWindow.cs).
