@@ -38,6 +38,9 @@
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>packages\ControlzEx.4.0.0\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.0.1\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -61,6 +64,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\CustomThumbContentControl.cs" />
+    <Compile Include="Controls\CustomThumb.cs" />
+    <Compile Include="Controls\CustomThumbContentControlAutomationPeer.cs" />
+    <Compile Include="Controls\CustomThumbContentControlDragCompletedEventArgs.cs" />
+    <Compile Include="Controls\CustomThumbContentControlDragStartedEventArgs.cs" />
+    <Compile Include="Controls\ICustomThumb.cs" />
+    <Compile Include="Controls\VisualTreeLocator.cs" />
+    <Compile Include="Controls\WindowClosingEventArgs.cs" />
+    <Compile Include="Controls\WindowCommandsControl.cs" />
+    <Compile Include="Data\ResizeModeMinMaxButtonVisibilityConverter.cs" />
     <Compile Include="Themes\DarkThemeBrushes.cs" />
     <Compile Include="Themes\DarkThemeColors.cs" />
     <Compile Include="Themes\LightThemeBrushes.cs" />
@@ -91,11 +104,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Themes\Styles\CustomThumbContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Styles\CustomWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Styles\Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Styles\WindowCommandsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,7 +147,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

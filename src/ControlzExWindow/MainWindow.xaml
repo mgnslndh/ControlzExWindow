@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:ControlzExWindow.Controls"
         mc:Ignorable="d"
+        ShowTitleBar="True"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
             <TextBlock>Hello World</TextBlock>
             <Button Name="SwitchTheme" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SwitchTheme_OnClick">Switch Theme</Button>
+            <ToggleButton Name="ToggleShowTitleBar" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ToggleShowTitleBar_OnClick">Toggle Show Title Bar</ToggleButton>
         </StackPanel>
 
     </Grid>

@@ -8,5 +8,8 @@
         WindowActiveBorder,
         WindowTitleBackground,
         WindowTitleForeground,
+        AccentBackground,
+        AccentForeground,
+        WindowButtonHoverBackground
     }
 }

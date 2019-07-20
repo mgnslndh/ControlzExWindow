@@ -31,5 +31,10 @@ namespace ControlzExWindow
             var theme = Theme.ThemeType == ThemeType.Light ? ThemeType.Dark : ThemeType.Light;
             Theme.LoadThemeType(theme);
         }
+
+        private void ToggleShowTitleBar_OnClick(object sender, RoutedEventArgs e)
+        {
+            ShowTitleBar = !ShowTitleBar;
+        }
     }
 }

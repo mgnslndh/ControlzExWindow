@@ -10,7 +10,11 @@
     <ResourceDictionary.MergedDictionaries>
         <themes:ThemeResourceDictionary/>
         <ResourceDictionary Source="/Themes/Styles/CustomWindow.xaml"/>
+        <ResourceDictionary Source="/Themes/Styles/CustomThumbContentControl.xaml"/>
+        <ResourceDictionary Source="/Themes/Styles/WindowCommandsControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <Style TargetType="{x:Type controls:WindowCommandsControl}" BasedOn="{StaticResource WindowCommandsControl}"/>
+    <Style TargetType="{x:Type controls:CustomThumbContentControl}" BasedOn="{StaticResource {x:Type ContentControl}}"/>
     <Style TargetType="{x:Type controls:CustomWindow}" BasedOn="{StaticResource CustomWindow}"/>
 </ResourceDictionary>

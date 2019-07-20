@@ -1,0 +1,133 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Controls="clr-namespace:ControlzExWindow.Controls"
+                    xmlns:Converters="clr-namespace:ControlzExWindow.Data"
+                    xmlns:themes="clr-namespace:ControlzExWindow.Themes">
+
+    <ControlTemplate x:Key="WindowCommandButtonTemplate" TargetType="{x:Type Button}">
+        <Grid Background="{TemplateBinding Background}">
+            <ContentPresenter
+               x:Name="PART_ContentPresenter"
+               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+               Content="{TemplateBinding Content}"
+               ContentStringFormat="{TemplateBinding ContentStringFormat}"
+               ContentTemplate="{TemplateBinding ContentTemplate}"
+               ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="WindowCommandButton" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Width" Value="36"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Template" Value="{StaticResource WindowCommandButtonTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{themes:ThemeResource ResourceKey=WindowButtonHoverBackground}"/>
+                <Setter Property="Foreground" Value="{themes:ThemeResource ResourceKey=AccentBackground}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{themes:ThemeResource ResourceKey=AccentBackground}" />
+                <Setter Property="Foreground" Value="{themes:ThemeResource ResourceKey=WindowTitleBackground}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.45" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <ControlTemplate x:Key="WindowCommandsControlTemplate" TargetType="{x:Type Controls:WindowCommandsControl}">
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="PART_Min"
+                    Style="{StaticResource WindowCommandButton}"
+                    IsEnabled="{Binding IsMinButtonEnabled, RelativeSource={RelativeSource AncestorType={x:Type Controls:CustomWindow}}}"
+                    ToolTip="{Binding MinimizeToolTip, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Button.Visibility>
+                    <MultiBinding Converter="{x:Static Converters:ResizeModeMinMaxButtonVisibilityConverter.Instance}" ConverterParameter="MIN">
+                        <Binding Mode="OneWay"
+                                 Path="ShowMinButton"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                        <Binding Mode="OneWay"
+                                 Path="UseNoneWindowStyle"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                        <Binding Mode="OneWay"
+                                 Path="ResizeMode"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                    </MultiBinding>
+                </Button.Visibility>
+                <Path Data="F1M0,6L0,9 9,9 9,6 0,6z"
+                      HorizontalAlignment="Center"
+                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                      SnapsToDevicePixels="True" />
+            </Button>
+            <Button x:Name="PART_Max"
+                    Style="{StaticResource WindowCommandButton}"
+                    IsEnabled="{Binding IsMaxRestoreButtonEnabled, RelativeSource={RelativeSource AncestorType={x:Type Controls:CustomWindow}}}"
+                    ToolTip="{Binding MaximizeToolTip, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Button.Visibility>
+                    <MultiBinding Converter="{x:Static Converters:ResizeModeMinMaxButtonVisibilityConverter.Instance}" ConverterParameter="MAX">
+                        <Binding Mode="OneWay"
+                                 Path="ShowMaxRestoreButton"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                        <Binding Mode="OneWay"
+                                 Path="UseNoneWindowStyle"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                        <Binding Mode="OneWay"
+                                 Path="ResizeMode"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                    </MultiBinding>
+                </Button.Visibility>
+                <!--  normal state  -->
+                <Path x:Name="PART_MaxPath"
+                      Width="10"
+                      Height="10"
+                      Data="F1M0,0L0,9 9,9 9,0 0,0 0,3 8,3 8,8 1,8 1,3z"
+                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                      SnapsToDevicePixels="True" />
+            </Button>
+            <Button x:Name="PART_Close"
+                    Style="{StaticResource WindowCommandButton}"
+                    IsEnabled="{Binding IsCloseButtonEnabled, RelativeSource={RelativeSource AncestorType={x:Type Controls:CustomWindow}}, Mode=OneWay}"
+                    RenderOptions.EdgeMode="Aliased"
+                    ToolTip="{Binding CloseToolTip, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Button.Visibility>
+                    <MultiBinding Converter="{x:Static Converters:ResizeModeMinMaxButtonVisibilityConverter.Instance}" ConverterParameter="CLOSE">
+                        <Binding Mode="OneWay"
+                                 Path="ShowCloseButton"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                        <Binding Mode="OneWay"
+                                 Path="UseNoneWindowStyle"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Controls:CustomWindow}}" />
+                    </MultiBinding>
+                </Button.Visibility>
+                <Path Data="M 10.009,1.704 L 8.331,0.026 5.03,3.327 1.703,0 0,1.704 3.326,5.031 0.025,8.332 1.703,10.009 5.004,6.708 8.305,10.009 10.009,8.305 6.708,5.005"
+                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                      SnapsToDevicePixels="True" />
+            </Button>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:CustomWindow}}, Path=WindowState}" Value="Maximized">
+                <Setter TargetName="PART_Max" Property="ToolTip" Value="{Binding RestoreToolTip, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="PART_MaxPath" Property="Data" Value="F1M0,10L0,3 3,3 3,0 10,0 10,2 4,2 4,3 7,3 7,6 6,6 6,5 1,5 1,10z M1,10L7,10 7,7 10,7 10,2 9,2 9,6 6,6 6,9 1,9z" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="WindowCommandsControl" TargetType="{x:Type Controls:WindowCommandsControl}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template" Value="{StaticResource WindowCommandsControlTemplate}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+</ResourceDictionary>

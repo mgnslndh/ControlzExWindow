@@ -40,6 +40,9 @@ namespace ControlzExWindow.Themes
                         SetResource(ThemeResourceKey.WindowActiveBorder, LightThemeBrushes.WindowActiveBorder);
                         SetResource(ThemeResourceKey.WindowTitleBackground, LightThemeBrushes.WindowBackground);
                         SetResource(ThemeResourceKey.WindowTitleForeground, LightThemeBrushes.WindowForeground);
+                        SetResource(ThemeResourceKey.AccentBackground, LightThemeBrushes.AccentBackground);
+                        SetResource(ThemeResourceKey.AccentForeground, LightThemeBrushes.AccentForeground);
+                        SetResource(ThemeResourceKey.WindowButtonHoverBackground, LightThemeBrushes.WindowButtonHoverBackground);
                         break;
                     }
 
@@ -51,6 +54,9 @@ namespace ControlzExWindow.Themes
                         SetResource(ThemeResourceKey.WindowActiveBorder, DarkThemeBrushes.WindowActiveBorder);
                         SetResource(ThemeResourceKey.WindowTitleBackground, DarkThemeBrushes.WindowBackground);
                         SetResource(ThemeResourceKey.WindowTitleForeground, DarkThemeBrushes.WindowForeground);
+                        SetResource(ThemeResourceKey.AccentBackground, DarkThemeBrushes.AccentBackground);
+                        SetResource(ThemeResourceKey.AccentForeground, DarkThemeBrushes.AccentForeground);
+                        SetResource(ThemeResourceKey.WindowButtonHoverBackground, DarkThemeBrushes.WindowButtonHoverBackground);
                         break;
                     }
             }

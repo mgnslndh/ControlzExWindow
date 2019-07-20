@@ -8,6 +8,9 @@ namespace ControlzExWindow.Themes
         public static readonly Color WindowForeground = ColorFromHex("#F1F1F1");
         public static readonly Color WindowBorder = ColorFromHex("Aqua");
         public static readonly Color WindowActiveBorder = ColorFromHex("Aqua");
+        public static readonly Color WindowButtonHoverBackground = ColorFromHex("Aqua");
+        public static readonly Color AccentBackground = ColorFromHex("Aqua");
+        public static readonly Color AccentForeground = ColorFromHex("Aqua");
 
     }
 }

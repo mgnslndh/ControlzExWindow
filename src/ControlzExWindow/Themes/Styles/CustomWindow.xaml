@@ -4,6 +4,7 @@
                     xmlns:controls="clr-namespace:ControlzExWindow.Controls"
                     xmlns:theme="clr-namespace:ControlzExWindow.Themes">
 
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <Style x:Key="WindowTitleButton" TargetType="{x:Type ButtonBase}">
         <Setter Property="DockPanel.Dock" Value="Right"/>
@@ -25,6 +26,17 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    <Style x:Key="WindowTitleThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Background="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <ControlTemplate x:Key="CustomWindowTemplate" TargetType="{x:Type controls:CustomWindow}">
         <Border
             x:Name="WindowBorder"
@@ -32,26 +44,64 @@
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border
+                <Rectangle x:Name="PART_WindowTitleBackground"
+                           Grid.Row="0"
+                           Fill="{theme:ThemeResource ResourceKey=WindowTitleBackground}"
+                           Focusable="False"
+                           StrokeThickness="0" />
+
+                <controls:CustomThumb
+                    x:Name="PART_WindowTitleThumb"
                     Grid.Row="0"
-                    Background="{theme:ThemeResource ResourceKey=WindowTitleBackground}">
-                    <DockPanel LastChildFill="False">
-                        <Image
-                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"
-                            Style="{DynamicResource WindowTitleImage}"/>
-                        <TextBlock
-                            Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
-                            Style="{DynamicResource WindowTitleTextBlock}"/>
-                        <Button Content="X" Style="{DynamicResource WindowTitleButton}"/>
-                        <Button Content="+" Style="{DynamicResource WindowTitleButton}"/>
-                        <Button Content="-" Style="{DynamicResource WindowTitleButton}"/>
-                    </DockPanel>
-                </Border>
+                    Style="{StaticResource WindowTitleThumb}"
+                    UseLayoutRounding="True" />
+
+                <DockPanel
+                    Grid.Row="0"
+                    LastChildFill="True"
+                    Panel.ZIndex="1"
+                    Focusable="False">
+                    <ContentControl x:Name="PART_TitleBarIcon"
+                                    DockPanel.Dock="Left"
+                                    Height="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    MinWidth="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    Panel.ZIndex="1"
+                                    Content="{TemplateBinding Icon}"
+                                    ContentTemplate="{TemplateBinding IconTemplate}"
+                                    Focusable="False"
+                                    Visibility="{TemplateBinding ShowIconOnTitleBar, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                    <!--  the window button commands  -->
+                    <controls:WindowCommandsControl x:Name="PART_TitleBarWindowCommands"
+                                      DockPanel.Dock="Right"
+                                      Height="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      VerticalAlignment="Top"
+                                      Panel.ZIndex="1"
+                                      Visibility="{TemplateBinding ShowTitleBar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                      Focusable="False" />
+
+                    <controls:CustomThumbContentControl
+                        x:Name="PART_TitleBar"
+                        Height="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        HorizontalAlignment="Left"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Foreground="{theme:ThemeResource ResourceKey=WindowTitleForeground}"
+                        Content="{TemplateBinding Title}"
+                        ContentTemplate="{TemplateBinding TitleTemplate}"
+                        Focusable="False"/>
+                </DockPanel>
+
                 <Grid Grid.Row="1">
                     <AdornerDecorator>
                         <ContentPresenter Content="{TemplateBinding ContentControl.Content}" ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" />
@@ -62,6 +112,9 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="ShowTitleBar" Value="False">
+                <Setter TargetName="PART_WindowTitleThumb" Property="Grid.RowSpan" Value="2" />
+            </Trigger>
             <Trigger Property="IsActive" Value="True">
                 <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{theme:ThemeResource ResourceKey=WindowActiveBorder}"/>
             </Trigger>
@@ -80,6 +133,7 @@
     </ControlTemplate>
 
     <Style x:Key="CustomWindow" TargetType="{x:Type controls:CustomWindow}">
+        <Setter Property="ShowIconOnTitleBar" Value="False" />
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
@@ -89,6 +143,16 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
         <Setter Property="Template" Value="{StaticResource CustomWindowTemplate}"/>
+        <Setter Property="TitleTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="8 -1 1 0"
+                               VerticalAlignment="Center"
+                               Text="Title"
+                               TextTrimming="CharacterEllipsis" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 
